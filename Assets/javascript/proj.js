@@ -22,8 +22,15 @@ var resultsDummy = "dummy results";
 
 var output = "";
 
-var queryURL = "https://api.edamam.com/search?q=chicken%2Crice&app_id=cd0febb4&app_key=6d1400c54461c5fb357e208675e77e00&from=0&to=3";
-
+var recipeResults = function(recipe) {
+  var queryURL = "https://api.edamam.com/search?q="+itemSearch+"&app_id=cd0febb4&app_key=6d1400c54461c5fb357e208675e77e00&from=0&to=3";
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).then(function(response) {
+    
+  });
+};
 
 $("#submitIngredient").on("click", function(event) {
     event.preventDefault();
@@ -35,19 +42,23 @@ $("#submitIngredient").on("click", function(event) {
 });
 
 var list = [];
+var display = [list.length];
 
 
 
 $("#recipe-check").on("click", function(event) {
   event.preventDefault();
-  for (i=0; i < list.length; i++) {
+  for (i=1; i < list.length; i++) {
     console.log(list[i]);
-    output = list[0];
-    output = output + "%2" + list[i];
-  } 
-  console.log(output);
+    
+    output = output + "%2C" + list[i];
+  }
+  display = output;
+  var itemSearch =  list[0] + display;
+  console.log(itemSearch);
   $("#page1").hide();
   $("#page2").show();
+  
     
 });
 
