@@ -5,7 +5,7 @@ h1{
     text-align: center;
 }
 p, h2, h3, h4, h6, label, input, ul, button{
-    font-family: 'Aref Ruqaa', serif;
+    font-family: 'Lato', 'sansserif';
     word-spacing: 8px;
 }
 h6{
@@ -25,7 +25,7 @@ h2{
     padding-bottom: 20px;
 }
 #ingredient-input{
-    border:1px solid #ffc107;
+    border:1px solid #070838;
     border-radius: .5rem;    
 }
 
@@ -44,6 +44,15 @@ footer{
     background-color:#070838;
     color: #fffef7;
     font-size: 12px;
+}
+.btn-primary {
+    background-color: orangered;
+    border-color: orangered;
+}
+.btn-outline-success {
+    color: white;
+    background-color: orangered;
+    border-color: orangered;
 }
 
 
