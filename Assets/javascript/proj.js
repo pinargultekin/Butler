@@ -24,12 +24,15 @@ var output = "";
 var itemSearch = "";
 // var queryURL = "https://api.edamam.com/search?q="+itemSearch+"&app_id=cd0febb4&app_key=6d1400c54461c5fb357e208675e77e00&from=0&to=3";
 
+
 var recipeResults = function() {
+
   var queryURL = "https://api.edamam.com/search?q="+itemSearch+"&app_id=cd0febb4&app_key=6d1400c54461c5fb357e208675e77e00&from=0&to=3";
   $.ajax({
     url: queryURL,
     method: "GET"
   }).then(function(response) {
+
 
     var rResults = response.hits;
 
@@ -44,7 +47,6 @@ var recipeResults = function() {
       rdiv.prepend(img);
       $("#rec-demo").prepend(rdiv, name);
     }
-
 
   });
 };
@@ -66,7 +68,7 @@ var display = [list.length];
 
 $("#recipe-check").on("click", function(event) {
   event.preventDefault();
-  for (i=0; i < list.length; i++) {
+  for (i=1; i < list.length; i++) {
     console.log(list[i]);
     
     output = output + "%2C" + list[i];
