@@ -11,14 +11,19 @@
 
 // // Create a variable to reference the database
 // var db = firebase.database();
+// var results = $.ajax({
+//   url: queryURL,
+//   method: "GET"
+//   }).then(function(response) {
+//   console.log(response);
+// });
 
-var queryURL = "https://api.edamam.com/search?q=chicken%2Crice&app_id=cd0febb4&app_key=6d1400c54461c5fb357e208675e77e00&from=0&to=3&calories=591-722&health=alcohol-free";
-$.ajax({
-  url: queryURL,
-  method: "GET"
-}).then(function(response) {
-  results.text(JSON.stringify(response));
-});
+var resultsDummy = "dummy results";
+
+var output = "";
+
+var queryURL = "https://api.edamam.com/search?q=chicken%2Crice&app_id=cd0febb4&app_key=6d1400c54461c5fb357e208675e77e00&from=0&to=3";
+
 
 $("#submitIngredient").on("click", function(event) {
     event.preventDefault();
@@ -26,16 +31,24 @@ $("#submitIngredient").on("click", function(event) {
     $("#ingredientList").append( 
         "<li class='list-group-item'>"+ingredient+"</li>");
     list.push(ingredient);
-    console.log(list);  
+    // console.log(list);  
 });
 
 var list = [];
 
-var results = "";
 
-$("#check-recipe").on("click", function(event) {
-    event.preventDefault();
-    console.log(results);  
+
+$("#recipe-check").on("click", function(event) {
+  event.preventDefault();
+  for (i=0; i < list.length; i++) {
+    console.log(list[i]);
+    output = list[0];
+    output = output + "%2" + list[i];
+  } 
+  console.log(output);
+  $("#page1").hide();
+  $("#page2").show();
+    
 });
 
 
