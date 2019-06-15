@@ -11,6 +11,7 @@
 
 // // Create a variable to reference the database
 // var db = firebase.database();
+var output = "";
 
 var queryURL = "https://api.edamam.com/search?q=chicken%2Crice&app_id=cd0febb4&app_key=6d1400c54461c5fb357e208675e77e00&from=0&to=3&calories=591-722&health=alcohol-free";
 $.ajax({
@@ -35,7 +36,11 @@ var results = "";
 
 $("#check-recipe").on("click", function(event) {
     event.preventDefault();
-    console.log(results);  
+    console.log(results);
+    for (i=1; i < list.length; i++) {
+      list[i] = "%2"+i
+      output = output + display[i];
+    } 
 });
 
 
