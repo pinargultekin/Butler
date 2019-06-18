@@ -88,7 +88,15 @@ $(document).ready(function(){
 
 // Wine API Integration
 
-var wQueryURL= 'https://cors-anywhere.herokuapp.com/https://api.globalwinescore.com/globalwinescores/latest/?wine'
+pairing= {
+  SauvignonBlanc: ["chicken", "turkey", "pork", "oyster", "scallop", "lobster", "shrimp", "asparagus", "chives", "cilantro"],
+  PinotNoir: ["lamb", "sausage", "filet mignon", "chicken", "tuna", "salmon","mushroom", "nutmeg", "cinnamon", "clove"],
+  Syrah: ["pepperoni", "sausage", "pork", "tuna","salmon", "beets","tomato", "oregano", "sage"],
+  Merlot: ["steak", "grilled", "tuna", "onion","tomato", "mint", "rosemary"],
+  CabernetSauvignon: ["venison", "rib eye", "beef", "tuna", "broccoli", "tomato", "rosemary"],
+  Chardonnay: ["beef", "chicken", "pork", "fish", "shrimp", "crab", "lobster", "patato", "squash", "basil","sesame"]
+}
+var wQueryURL= 'https://cors-anywhere.herokuapp.com/https://api.globalwinescore.com/globalwinescores/latest/?wine='; 
 
 
 $.ajax({
@@ -104,6 +112,18 @@ $.ajax({
 
   });
  
+
+ $("#wine-pair").on("click", function (event){
+  event.preventDefault();
+  if (itemSearch === "SauvignonBlanc") {
+    wQueryURL.append("sauvignon_blanc");
+
+    $("#paired-wine")
+    $("#page1").hide();
+    $("#page2").hide();
+    $("#page3").show();
+  }
+ });
 
 
 
