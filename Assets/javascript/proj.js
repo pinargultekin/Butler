@@ -1,22 +1,7 @@
-// const firebaseConfig = {
-//   apiKey: "AIzaSyBBDgBqGMtIDNTScDk9-LajgqBSOTkURb0",
-//   authDomain: "food-wine-project.firebaseapp.com",
-//   databaseURL: "https://food-wine-project.firebaseio.com",
-//   projectId: "food-wine-project",
-//   storageBucket: "food-wine-project.appspot.com",
-//   messagingSenderId: "760442689212",
-//   appId: "1:760442689212:web:7b64254f6a203455"
-// };
-// firebase.initializeApp(firebaseConfig);
 
-// // Create a variable to reference the database
-// var db = firebase.database();
-// var results = $.ajax({
-//   url: queryURL,
-//   method: "GET"
-//   }).then(function(response) {
-//   console.log(response);
-// });
+// Create a variable to reference the database
+
+
 
 var resultsDummy = "dummy results";
 
@@ -125,6 +110,36 @@ $.ajax({
   }
  });
 
+ var firebaseConfig = {
+  apiKey: "AIzaSyAR2StH0_4srWKYV2SMNXerJX1_jzHijmk",
+  authDomain: "butler-database.firebaseapp.com",
+  databaseURL: "https://butler-database.firebaseio.com",
+  projectId: "butler-database",
+  storageBucket: "butler-database.appspot.com",
+  messagingSenderId: "515778616275",
+  appId: "1:515778616275:web:57fb705dfc982415"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 
+var db = firebase.database();
 
+var connectionsRef = db.ref("/connections");
 
+// '.info/connected' is a special location provided by Firebase that is updated
+// every time the client's connection state changes.
+// '.info/connected' is a boolean value, true if the client is connected and false if they are not.
+var connectedRef = db.ref(".info/connected");
+
+// When the client's connection state changes...
+connectedRef.on("value", function(snap) {
+
+  // If they are connected..
+  if (snap.val()) {
+
+    // Add user to the connections list.
+    var con = connectionsRef.push(true);
+    // Remove user from the connection list when they disconnect.
+    con.onDisconnect().remove();
+  }
+});
