@@ -42,10 +42,11 @@ var recipeResults = function() {
       rdiv = $("<div class='card'id='food-image'  alt='Food image'>");
       var img = $("<img class='card-img-top'>");
       img.attr("src", rResults[j].recipe.image);
-      var name = $("<div class='card-body p-0'>");
-      name.prepend("<a href='#' id='wine-pair' class='btn btn-primary wineButton col-12'>Pair with wine</a>");
-      name.prepend("<a href='"+rResults[j].recipe.url+"' target='blank' class='card-title row col-12 food-title'>"+rResults[j].recipe.label+"</a>");
-      rdiv.prepend(img, name);
+      var name = $("<div class='card-body px-5'>");
+      var foot = $("<div class='card-footer p-0'>");
+      foot.prepend("<a href='#' id='wine-pair' class='btn btn-primary wineButton col-12'>Pair with wine</a>");
+      name.prepend("<a href='"+rResults[j].recipe.url+"' target='blank' class='card-title food-title'>"+rResults[j].recipe.label+"</a>");
+      rdiv.prepend(img, name, foot);
       $("#rec-demo").prepend(rdiv);
     }
 
