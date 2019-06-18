@@ -43,8 +43,8 @@ var recipeResults = function() {
       var img = $("<img class='card-img-top'>");
       img.attr("src", rResults[j].recipe.image);
       var name = $("<div class='card-body'>");
-      name.prepend("<a href='#' class='btn btn-primary'>Pair with wine</a>")
-      name.prepend("<h5 class='card-title' id='food-title'>"+rResults[j].recipe.label+"</h5>");
+      name.prepend("<a href='#' class='btn btn-primary'>Pair with wine</a>");
+      name.prepend("<a href='"+rResults[j].recipe.url+"' target='blank' class='card-title' id='food-title'>"+rResults[j].recipe.label+"</a>");
       rdiv.prepend(img);
       $("#rec-demo").prepend(rdiv, name);
     }
@@ -90,7 +90,7 @@ $(document).ready(function(){
 // Wine API Integration
 
 var wQueryURL= 'https://cors-anywhere.herokuapp.com/https://api.globalwinescore.com/globalwinescores/latest/?wine'
-
+var wineRseults = "";
 
 $.ajax({
   url: wQueryURL,
@@ -99,9 +99,9 @@ $.ajax({
 }).then(function(response) {
 
 
-  // var wResults = response;
+  wineRseults = response;
 
-  console.log(response);
+  console.log(wineRseults);
 
   });
  
