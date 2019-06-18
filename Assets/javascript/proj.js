@@ -99,6 +99,8 @@ pairing= {
   CabernetSauvignon: ["venison", "rib eye", "beef", "tuna", "broccoli", "tomato", "rosemary"],
   Chardonnay: ["beef", "chicken", "pork", "fish", "shrimp", "crab", "lobster", "patato", "squash", "basil","sesame"]
 }
+
+
 var wQueryURL= 'https://cors-anywhere.herokuapp.com/https://api.globalwinescore.com/globalwinescores/latest/?wine='; 
 
 $.ajax({
@@ -108,22 +110,35 @@ $.ajax({
 }).then(function(response) {
 
 
-  console.log(wineRseults);
+  console.log(wineResults);
 
   });
  
 
  $("#wine-pair").on("click", function (event){
   event.preventDefault();
-  if (list === "SauvignonBlanc") {
+  if (ingredientLines === "SauvignonBlanc") {
     wQueryURL.append("sauvignon_blanc");
-  
+    console.log(wineRseults);
+  }else if (ingredientLines === "PinotNoir"){
+    wQueryURL.append("pinot_noir");
+  }else if (ingredientLines ==="Syrah"){
+    wQueryURL.append("syrah");
+  }else if (ingredientLines === "Merlot"){
+    wQueryURL.append("merlot");
+  }else if (ingredientLines === "CabernetSauvignon"){
+    wQueryURL.append("cabernet_sauvignon");
+  }else if (ingredientLines === "Chardonnay"){
+    wQueryURL.append("chardonnay");
+  };
+console.log(wQueryURL);
+
     $("#paired-wine")
     $("#page1").hide();
     $("#page2").hide();
     $("#page3").show();
-  }
  });
+
 
 
 
