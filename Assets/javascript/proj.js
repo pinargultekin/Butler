@@ -39,11 +39,12 @@ var recipeResults = function() {
     console.log(rResults);
 
     for (var j = 0; j < rResults.length; j++) {
-      rdiv = $("<div>");
-      var img = $("<img class='image'>");
+      rdiv = $("<div class='card'id='food-image'  alt='Food image'>");
+      var img = $("<img class='card-img-top'>");
       img.attr("src", rResults[j].recipe.image);
-      var name = $("<div>");
-      name.prepend(rResults[j].recipe.label);
+      var name = $("<div class='card-body'>");
+      name.prepend("<a href='#' class='btn btn-primary'>Pair with wine</a>")
+      name.prepend("<h5 class='card-title' id='food-title'>"+rResults[j].recipe.label+"</h5>");
       rdiv.prepend(img);
       $("#rec-demo").prepend(rdiv, name);
     }
