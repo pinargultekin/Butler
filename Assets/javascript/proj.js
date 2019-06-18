@@ -42,11 +42,12 @@ var recipeResults = function() {
       rdiv = $("<div class='card'id='food-image'  alt='Food image'>");
       var img = $("<img class='card-img-top'>");
       img.attr("src", rResults[j].recipe.image);
-      var name = $("<div class='card-body'>");
-      name.prepend("<a href='#' class='btn btn-primary'>Pair with wine</a>")
-      name.prepend("<h5 class='card-title' id='food-title'>"+rResults[j].recipe.label+"</h5>");
-      rdiv.prepend(img);
-      $("#rec-demo").prepend(rdiv, name);
+      var name = $("<div class='card-body px-5'>");
+      var foot = $("<div class='card-footer p-0'>");
+      foot.prepend("<a href='#' id='wine-pair' class='btn btn-primary wineButton col-12'>Pair with wine</a>");
+      name.prepend("<a href='"+rResults[j].recipe.url+"' target='blank' class='card-title food-title'>"+rResults[j].recipe.label+"</a>");
+      rdiv.prepend(img, name, foot);
+      $("#rec-demo").prepend(rdiv);
     }
 
   });
@@ -89,6 +90,7 @@ $(document).ready(function(){
 
 // Wine API Integration
 
+
 pairing= {
   SauvignonBlanc: ["chicken", "turkey", "pork", "oyster", "scallop", "lobster", "shrimp", "asparagus", "chives", "cilantro"],
   PinotNoir: ["lamb", "sausage", "filet mignon", "chicken", "tuna", "salmon","mushroom", "nutmeg", "cinnamon", "clove"],
@@ -99,7 +101,6 @@ pairing= {
 }
 var wQueryURL= 'https://cors-anywhere.herokuapp.com/https://api.globalwinescore.com/globalwinescores/latest/?wine='; 
 
-
 $.ajax({
   url: wQueryURL,
   method: "GET",
@@ -107,9 +108,7 @@ $.ajax({
 }).then(function(response) {
 
 
-  // var wResults = response;
-
-  console.log(response);
+  console.log(wineRseults);
 
   });
  
