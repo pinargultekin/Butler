@@ -115,9 +115,9 @@ $.ajax({
 
  $("#wine-pair").on("click", function (event){
   event.preventDefault();
-  if (itemSearch === "SauvignonBlanc") {
+  if (list === "SauvignonBlanc") {
     wQueryURL.append("sauvignon_blanc");
-
+  
     $("#paired-wine")
     $("#page1").hide();
     $("#page2").hide();
