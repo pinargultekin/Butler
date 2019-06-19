@@ -127,6 +127,7 @@ var Chardonnay = ["beef", "chicken", "pork", "fish", "shrimp", "crab", "lobster"
 
 
 
+
 // var wQueryURL = "https://cors-anywhere.herokuapp.com/https://api.globalwinescore.com/globalwinescores/latest/?wine=" + vine;
 
 // $.ajax({
@@ -139,6 +140,7 @@ var Chardonnay = ["beef", "chicken", "pork", "fish", "shrimp", "crab", "lobster"
 //   console.log(response);
 
 // });
+
 // document.getElementsByClassName("wineButton").on("click", function (event) {
 
 $(document).on('click', ".wineButton", function () {
@@ -191,6 +193,7 @@ $(document).on('click', ".wineButton", function () {
   function getWine() {
     if ((Blancmatches > Pinotmatches) && (Blancmatches > Syrahmatches) && (Blancmatches > Merlotmatches) && (Blancmatches > Cabernetmatches) && (Blancmatches > Chardonnaymatches)) {
       wQueryURL = "https://cors-anywhere.herokuapp.com/https://api.globalwinescore.com/globalwinescores/latest/?wine=Sauvignon_Blanc"
+
       $.ajax({
         url: wQueryURL,
         method: "GET",
@@ -251,6 +254,7 @@ $(document).on('click', ".wineButton", function () {
         method: "GET",
         headers: { 'Authorization': 'Token 4d786bd8008d8fed360a5eb1a42ac9970ca664ba' }
       }).then(function (response) {
+
         console.log(response);
       });
     } else {
@@ -298,7 +302,11 @@ $(document).on('click', ".wineButton", function () {
 });
 
 
-var firebaseConfig = {
+  //=========================================//
+ //----------------Database-----------------//
+//=========================================//
+ var firebaseConfig = {
+
   apiKey: "AIzaSyAR2StH0_4srWKYV2SMNXerJX1_jzHijmk",
   authDomain: "butler-database.firebaseapp.com",
   databaseURL: "https://butler-database.firebaseio.com",
@@ -314,15 +322,12 @@ var db = firebase.database();
 
 var connectionsRef = db.ref("/connections");
 
-// '.info/connected' is a special location provided by Firebase that is updated
-// every time the client's connection state changes.
-// '.info/connected' is a boolean value, true if the client is connected and false if they are not.
 var connectedRef = db.ref(".info/connected");
 
-// When the client's connection state changes...
-connectedRef.on("value", function (snap) {
 
-  // If they are connected..
+connectedRef.on("value", function(snap) {
+
+
   if (snap.val()) {
 
     // Add user to the connections list.
