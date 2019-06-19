@@ -136,10 +136,7 @@ var Chardonnay = ["beef", "chicken", "pork", "fish", "shrimp", "crab", "lobster"
 // }).then(function (response) {
 //   console.log(response);
 // });
-<<<<<<< HEAD
-=======
 
->>>>>>> d0405ef6feb99a8315fef47c39dd46002a82e628
 // document.getElementsByClassName("wineButton").on("click", function (event) {
 
 $(document).on('click', ".wineButton", function () {
@@ -297,7 +294,7 @@ $(document).on('click', ".wineButton", function () {
         method: "GET",
         headers: { 'Authorization': 'Token 4d786bd8008d8fed360a5eb1a42ac9970ca664ba' }
       }).then(function (response) {
-<<<<<<< HEAD
+
           var results= response;
 
         for(var i=0; i<results.length; i++){
@@ -308,8 +305,6 @@ $(document).on('click', ".wineButton", function () {
         $("#wine-demo").append(wineDiv);
         }
         console.log(response.results[0].wine);
-=======
->>>>>>> d0405ef6feb99a8315fef47c39dd46002a82e628
 
         console.log(response);
       });
