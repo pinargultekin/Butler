@@ -198,7 +198,8 @@ $(document).on('click', ".wineButton", function () {
         var results= response;
 
         for(var i=0; i<results.length; i++){
-
+          
+          $("#wine-demo").show();
           $("#vine").text( "According to your choice of dish we recommend : " + response.results[0].wine);
         // var wineDiv = $("<div>");
         // var p = $("<p>").HTML("Recommended Wine(s): " + response.results[0].wine);
