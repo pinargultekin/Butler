@@ -136,10 +136,6 @@ var Chardonnay = ["beef", "chicken", "pork", "fish", "shrimp", "crab", "lobster"
 // }).then(function (response) {
 //   console.log(response);
 // });
-<<<<<<< HEAD
-=======
-
->>>>>>> d0405ef6feb99a8315fef47c39dd46002a82e628
 // document.getElementsByClassName("wineButton").on("click", function (event) {
 
 $(document).on('click', ".wineButton", function () {
@@ -199,17 +195,13 @@ $(document).on('click', ".wineButton", function () {
         headers: { 'Authorization': 'Token 4d786bd8008d8fed360a5eb1a42ac9970ca664ba' }
       }).then(function (response) {
 
-        var results= response;
+        var results= response.results;
 
         for(var i=0; i<results.length; i++){
-          
+          console.log(results[0].wine);
           $("#wine-demo").show();
-          $("#vine").text( "According to your choice of dish we recommend : " + response.results[0].wine);
-        // var wineDiv = $("<div>");
-        // var p = $("<p>").HTML("Recommended Wine(s): " + response.results[0].wine);
+          $("#vine").text( "According to your choice of dish we recommend : " + results[0].wine);
         
-        // wineDiv.append(p);
-        // $("#wine-demo").append(wineDiv);
         }
         console.log(response.results[0].wine);
       });
@@ -221,14 +213,14 @@ $(document).on('click', ".wineButton", function () {
         method: "GET",
         headers: { 'Authorization': 'Token 4d786bd8008d8fed360a5eb1a42ac9970ca664ba' }
       }).then(function (response) {
-        var results= response;
+       
+        var results= response.results;
 
         for(var i=0; i<results.length; i++){
-        var wineDiv = $("<div>");
-        var p = $("<p>").HTML("Recommended Wine(s): " + response.results[0].wine);
+          console.log(results[0].wine);
+          $("#wine-demo").show();
+          $("#vine").text( "According to your choice of dish we recommend : " + results[0].wine);
         
-        wineDiv.append(p);
-        $("#wine-demo").append(wineDiv);
         }
         console.log(response.results[0].wine);
         console.log(response);
@@ -240,14 +232,14 @@ $(document).on('click', ".wineButton", function () {
         method: "GET",
         headers: { 'Authorization': 'Token 4d786bd8008d8fed360a5eb1a42ac9970ca664ba' }
       }).then(function (response) {
-        var results= response;
+       
+        var results= response.results;
 
         for(var i=0; i<results.length; i++){
-        var wineDiv = $("<div>");
-        var p = $("<p>").HTML("Recommended Wine(s): " + response.results[0].wine);
+          console.log(results[0].wine);
+          $("#wine-demo").show();
+          $("#vine").text( "According to your choice of dish we recommend : " + results[0].wine);
         
-        wineDiv.append(p);
-        $("#wine-demo").append(wineDiv);
         }
         console.log(response.results[0].wine);
         console.log(response);
@@ -259,14 +251,14 @@ $(document).on('click', ".wineButton", function () {
         method: "GET",
         headers: { 'Authorization': 'Token 4d786bd8008d8fed360a5eb1a42ac9970ca664ba' }
       }).then(function (response) {
-        var results= response;
+        
+        var results= response.results;
 
         for(var i=0; i<results.length; i++){
-        var wineDiv = $("<div>");
-        var p = $("<p>").HTML("Recommended Wine(s): " + response.results[0].wine);
+          console.log(results[0].wine);
+          $("#wine-demo").show();
+          $("#vine").text( "According to your choice of dish we recommend : " + results[0].wine);
         
-        wineDiv.append(p);
-        $("#wine-demo").append(wineDiv);
         }
         console.log(response.results[0].wine);
         console.log(response);
@@ -278,14 +270,14 @@ $(document).on('click', ".wineButton", function () {
         method: "GET",
         headers: { 'Authorization': 'Token 4d786bd8008d8fed360a5eb1a42ac9970ca664ba' }
       }).then(function (response) {
-        var results= response;
+        
+        var results= response.results;
 
         for(var i=0; i<results.length; i++){
-        var wineDiv = $("<div>");
-        var p = $("<p>").HTML("Recommended Wine(s): " + response.results[0].wine);
+          console.log(results[0].wine);
+          $("#wine-demo").show();
+          $("#vine").text( "According to your choice of dish we recommend : " + results[0].wine);
         
-        wineDiv.append(p);
-        $("#wine-demo").append(wineDiv);
         }
         console.log(response.results[0].wine);
         console.log(response);
@@ -297,20 +289,16 @@ $(document).on('click', ".wineButton", function () {
         method: "GET",
         headers: { 'Authorization': 'Token 4d786bd8008d8fed360a5eb1a42ac9970ca664ba' }
       }).then(function (response) {
-<<<<<<< HEAD
-          var results= response;
+
+        var results= response.results;
 
         for(var i=0; i<results.length; i++){
-        var wineDiv = $("<div>");
-        var p = $("<p>").HTML("Recommended Wine(s): " + response.results[0].wine);
+          console.log(results[0].wine);
+          $("#wine-demo").show();
+          $("#vine").text( "According to your choice of dish we recommend : " + results[0].wine);
         
-        wineDiv.append(p);
-        $("#wine-demo").append(wineDiv);
         }
         console.log(response.results[0].wine);
-=======
->>>>>>> d0405ef6feb99a8315fef47c39dd46002a82e628
-
         console.log(response);
       });
     } else {
