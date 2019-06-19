@@ -129,18 +129,13 @@ var Chardonnay = ["beef", "chicken", "pork", "fish", "shrimp", "crab", "lobster"
 
 
 // var wQueryURL = "https://cors-anywhere.herokuapp.com/https://api.globalwinescore.com/globalwinescores/latest/?wine=" + vine;
-
 // $.ajax({
 //   url: wQueryURL,
 //   method: "GET",
-
 //   headers: { 'Authorization': 'Token 4d786bd8008d8fed360a5eb1a42ac9970ca664ba' }
 // }).then(function (response) {
-
 //   console.log(response);
-
 // });
-
 // document.getElementsByClassName("wineButton").on("click", function (event) {
 
 $(document).on('click', ".wineButton", function () {
@@ -200,15 +195,15 @@ $(document).on('click', ".wineButton", function () {
         headers: { 'Authorization': 'Token 4d786bd8008d8fed360a5eb1a42ac9970ca664ba' }
       }).then(function (response) {
 
-        var wResults= response;
-        for(var n=0; n<wResults.length; n++){
-        var wineDiv = $("<div>");
-        var p = $("<p>").text("Recommended Wine: " + wResults[n].wine);
+        var results= response.results;
+
+        for(var i=0; i<results.length; i++){
+          console.log(results[0].wine);
+          $("#wine-demo").show();
+          $("#vine").text( "According to your choice of dish we recommend : " + results[0].wine);
         
-        wineDiv.append(p);
-        $("#wine-demo").append(wineDiv);
         }
-        console.log(wResults[n].results.wine);
+        console.log(response.results[0].wine);
       });
       
     } else if ((Pinotmatches > Blancmatches) && (Pinotmatches > Syrahmatches) && (Pinotmatches > Merlotmatches) && (Pinotmatches > Cabernetmatches) && (Pinotmatches > Chardonnaymatches)) {
@@ -218,6 +213,16 @@ $(document).on('click', ".wineButton", function () {
         method: "GET",
         headers: { 'Authorization': 'Token 4d786bd8008d8fed360a5eb1a42ac9970ca664ba' }
       }).then(function (response) {
+       
+        var results= response.results;
+
+        for(var i=0; i<results.length; i++){
+          console.log(results[0].wine);
+          $("#wine-demo").show();
+          $("#vine").text( "According to your choice of dish we recommend : " + results[0].wine);
+        
+        }
+        console.log(response.results[0].wine);
         console.log(response);
       });
     } else if ((Syrahmatches > Blancmatches) && (Syrahmatches > Pinotmatches) && (Syrahmatches > Merlotmatches) && (Syrahmatches > Cabernetmatches) && (Syrahmatches > Chardonnaymatches)) {
@@ -227,6 +232,16 @@ $(document).on('click', ".wineButton", function () {
         method: "GET",
         headers: { 'Authorization': 'Token 4d786bd8008d8fed360a5eb1a42ac9970ca664ba' }
       }).then(function (response) {
+       
+        var results= response.results;
+
+        for(var i=0; i<results.length; i++){
+          console.log(results[0].wine);
+          $("#wine-demo").show();
+          $("#vine").text( "According to your choice of dish we recommend : " + results[0].wine);
+        
+        }
+        console.log(response.results[0].wine);
         console.log(response);
       });
     } else if ((Merlotmatches > Blancmatches) && (Merlotmatches > Pinotmatches) && (Merlotmatches > Syrahmatches) && (Merlotmatches > Cabernetmatches) && (Merlotmatches > Chardonnaymatches)) {
@@ -236,6 +251,16 @@ $(document).on('click', ".wineButton", function () {
         method: "GET",
         headers: { 'Authorization': 'Token 4d786bd8008d8fed360a5eb1a42ac9970ca664ba' }
       }).then(function (response) {
+        
+        var results= response.results;
+
+        for(var i=0; i<results.length; i++){
+          console.log(results[0].wine);
+          $("#wine-demo").show();
+          $("#vine").text( "According to your choice of dish we recommend : " + results[0].wine);
+        
+        }
+        console.log(response.results[0].wine);
         console.log(response);
       });
     } else if ((Cabernetmatches > Blancmatches) && (Cabernetmatches > Pinotmatches) && (Cabernetmatches > Syrahmatches) && (Cabernetmatches > Merlotmatches) && (Cabernetmatches > Chardonnaymatches)) {
@@ -245,6 +270,16 @@ $(document).on('click', ".wineButton", function () {
         method: "GET",
         headers: { 'Authorization': 'Token 4d786bd8008d8fed360a5eb1a42ac9970ca664ba' }
       }).then(function (response) {
+        
+        var results= response.results;
+
+        for(var i=0; i<results.length; i++){
+          console.log(results[0].wine);
+          $("#wine-demo").show();
+          $("#vine").text( "According to your choice of dish we recommend : " + results[0].wine);
+        
+        }
+        console.log(response.results[0].wine);
         console.log(response);
       });
     } else if ((Chardonnaymatches > Blancmatches) && (Chardonnaymatches > Pinotmatches) && (Chardonnaymatches > Syrahmatches) && (Chardonnaymatches > Merlotmatches) && (Chardonnaymatches > Cabernetmatches)) {
@@ -255,6 +290,15 @@ $(document).on('click', ".wineButton", function () {
         headers: { 'Authorization': 'Token 4d786bd8008d8fed360a5eb1a42ac9970ca664ba' }
       }).then(function (response) {
 
+        var results= response.results;
+
+        for(var i=0; i<results.length; i++){
+          console.log(results[0].wine);
+          $("#wine-demo").show();
+          $("#vine").text( "According to your choice of dish we recommend : " + results[0].wine);
+        
+        }
+        console.log(response.results[0].wine);
         console.log(response);
       });
     } else {
@@ -263,12 +307,7 @@ $(document).on('click', ".wineButton", function () {
   }
   getWine();
 
-  // wdiv = $("<div class='card' id='wine'");
-  // var recWine = $("<div class='card-body px-5'>");
-  // recWine.append("<a href='" + response.url + "' target='blank' class='card-title'>" + response + "</a>");
-  // wdiv.append(recWine);
-  // $("#rec-demo").append(wdiv);
-
+  
 
   // var max= function(wineMatches) {
   //   maxNum= wineMatches[0];
@@ -280,25 +319,7 @@ $(document).on('click', ".wineButton", function () {
   //   return maxNum;
   //   // wineMatchNum = maxNum;
   // }
-  // console.log(max(wineMatches));
-  // if (ingredientLines === "SauvignonBlanc") {
-  //   wQueryURL.append("sauvignon_blanc");
-  // } else if (ingredientLines === "PinotNoir") {
-  //   wQueryURL.append("pinot_noir");
-  // } else if (ingredientLines === "Syrah") {
-  //   wQueryURL.append("syrah");
-  // } else if (ingredientLines === "Merlot") {
-  //   wQueryURL.append("merlot");
-  // } else if (ingredientLines === "CabernetSauvignon") {
-  //   wQueryURL.append("cabernet_sauvignon");
-  // } else if (ingredientLines === "Chardonnay") {
-  //   wQueryURL.append("chardonnay");
-  // };
-  // console.log(wQueryURL);
-  // // $("#paired-wine")
-  // // $("#page1").hide();
-  // // $("#page2").hide();
-  // // $("#page3").show();
+  
 });
 
 
