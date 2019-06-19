@@ -127,17 +127,14 @@ var Chardonnay = ["beef", "chicken", "pork", "fish", "shrimp", "crab", "lobster"
 
 
 
-// var wQueryURL = "https://cors-anywhere.herokuapp.com/https://api.globalwinescore.com/globalwinescores/latest/?wine=" + vine;
 
+// var wQueryURL = "https://cors-anywhere.herokuapp.com/https://api.globalwinescore.com/globalwinescores/latest/?wine=" + vine;
 // $.ajax({
 //   url: wQueryURL,
 //   method: "GET",
-
 //   headers: { 'Authorization': 'Token 4d786bd8008d8fed360a5eb1a42ac9970ca664ba' }
 // }).then(function (response) {
-
 //   console.log(response);
-
 // });
 // document.getElementsByClassName("wineButton").on("click", function (event) {
 
@@ -191,21 +188,25 @@ $(document).on('click', ".wineButton", function () {
   function getWine() {
     if ((Blancmatches > Pinotmatches) && (Blancmatches > Syrahmatches) && (Blancmatches > Merlotmatches) && (Blancmatches > Cabernetmatches) && (Blancmatches > Chardonnaymatches)) {
       wQueryURL = "https://cors-anywhere.herokuapp.com/https://api.globalwinescore.com/globalwinescores/latest/?wine=Sauvignon_Blanc"
+
       $.ajax({
         url: wQueryURL,
         method: "GET",
         headers: { 'Authorization': 'Token 4d786bd8008d8fed360a5eb1a42ac9970ca664ba' }
       }).then(function (response) {
 
-        var wResults= response;
-        for(var n=0; n<wResults.length; n++){
-        var wineDiv = $("<div>");
-        var p = $("<p>").text("Recommended Wine: " + wResults[n].wine);
+        var results= response;
+
+        for(var i=0; i<results.length; i++){
+
+          $("#vine").text( "According to your choice of dish we recommend : " + response.results[0].wine);
+        // var wineDiv = $("<div>");
+        // var p = $("<p>").HTML("Recommended Wine(s): " + response.results[0].wine);
         
-        wineDiv.append(p);
-        $("#wine-demo").append(wineDiv);
+        // wineDiv.append(p);
+        // $("#wine-demo").append(wineDiv);
         }
-        console.log(wResults[n].results.wine);
+        console.log(response.results[0].wine);
       });
       
     } else if ((Pinotmatches > Blancmatches) && (Pinotmatches > Syrahmatches) && (Pinotmatches > Merlotmatches) && (Pinotmatches > Cabernetmatches) && (Pinotmatches > Chardonnaymatches)) {
@@ -215,6 +216,16 @@ $(document).on('click', ".wineButton", function () {
         method: "GET",
         headers: { 'Authorization': 'Token 4d786bd8008d8fed360a5eb1a42ac9970ca664ba' }
       }).then(function (response) {
+        var results= response;
+
+        for(var i=0; i<results.length; i++){
+        var wineDiv = $("<div>");
+        var p = $("<p>").HTML("Recommended Wine(s): " + response.results[0].wine);
+        
+        wineDiv.append(p);
+        $("#wine-demo").append(wineDiv);
+        }
+        console.log(response.results[0].wine);
         console.log(response);
       });
     } else if ((Syrahmatches > Blancmatches) && (Syrahmatches > Pinotmatches) && (Syrahmatches > Merlotmatches) && (Syrahmatches > Cabernetmatches) && (Syrahmatches > Chardonnaymatches)) {
@@ -224,6 +235,16 @@ $(document).on('click', ".wineButton", function () {
         method: "GET",
         headers: { 'Authorization': 'Token 4d786bd8008d8fed360a5eb1a42ac9970ca664ba' }
       }).then(function (response) {
+        var results= response;
+
+        for(var i=0; i<results.length; i++){
+        var wineDiv = $("<div>");
+        var p = $("<p>").HTML("Recommended Wine(s): " + response.results[0].wine);
+        
+        wineDiv.append(p);
+        $("#wine-demo").append(wineDiv);
+        }
+        console.log(response.results[0].wine);
         console.log(response);
       });
     } else if ((Merlotmatches > Blancmatches) && (Merlotmatches > Pinotmatches) && (Merlotmatches > Syrahmatches) && (Merlotmatches > Cabernetmatches) && (Merlotmatches > Chardonnaymatches)) {
@@ -233,6 +254,16 @@ $(document).on('click', ".wineButton", function () {
         method: "GET",
         headers: { 'Authorization': 'Token 4d786bd8008d8fed360a5eb1a42ac9970ca664ba' }
       }).then(function (response) {
+        var results= response;
+
+        for(var i=0; i<results.length; i++){
+        var wineDiv = $("<div>");
+        var p = $("<p>").HTML("Recommended Wine(s): " + response.results[0].wine);
+        
+        wineDiv.append(p);
+        $("#wine-demo").append(wineDiv);
+        }
+        console.log(response.results[0].wine);
         console.log(response);
       });
     } else if ((Cabernetmatches > Blancmatches) && (Cabernetmatches > Pinotmatches) && (Cabernetmatches > Syrahmatches) && (Cabernetmatches > Merlotmatches) && (Cabernetmatches > Chardonnaymatches)) {
@@ -242,6 +273,16 @@ $(document).on('click', ".wineButton", function () {
         method: "GET",
         headers: { 'Authorization': 'Token 4d786bd8008d8fed360a5eb1a42ac9970ca664ba' }
       }).then(function (response) {
+        var results= response;
+
+        for(var i=0; i<results.length; i++){
+        var wineDiv = $("<div>");
+        var p = $("<p>").HTML("Recommended Wine(s): " + response.results[0].wine);
+        
+        wineDiv.append(p);
+        $("#wine-demo").append(wineDiv);
+        }
+        console.log(response.results[0].wine);
         console.log(response);
       });
     } else if ((Chardonnaymatches > Blancmatches) && (Chardonnaymatches > Pinotmatches) && (Chardonnaymatches > Syrahmatches) && (Chardonnaymatches > Merlotmatches) && (Chardonnaymatches > Cabernetmatches)) {
@@ -251,6 +292,17 @@ $(document).on('click', ".wineButton", function () {
         method: "GET",
         headers: { 'Authorization': 'Token 4d786bd8008d8fed360a5eb1a42ac9970ca664ba' }
       }).then(function (response) {
+          var results= response;
+
+        for(var i=0; i<results.length; i++){
+        var wineDiv = $("<div>");
+        var p = $("<p>").HTML("Recommended Wine(s): " + response.results[0].wine);
+        
+        wineDiv.append(p);
+        $("#wine-demo").append(wineDiv);
+        }
+        console.log(response.results[0].wine);
+
         console.log(response);
       });
     } else {
@@ -259,12 +311,7 @@ $(document).on('click', ".wineButton", function () {
   }
   getWine();
 
-  // wdiv = $("<div class='card' id='wine'");
-  // var recWine = $("<div class='card-body px-5'>");
-  // recWine.append("<a href='" + response.url + "' target='blank' class='card-title'>" + response + "</a>");
-  // wdiv.append(recWine);
-  // $("#rec-demo").append(wdiv);
-
+  
 
   // var max= function(wineMatches) {
   //   maxNum= wineMatches[0];
@@ -276,29 +323,15 @@ $(document).on('click', ".wineButton", function () {
   //   return maxNum;
   //   // wineMatchNum = maxNum;
   // }
-  // console.log(max(wineMatches));
-  // if (ingredientLines === "SauvignonBlanc") {
-  //   wQueryURL.append("sauvignon_blanc");
-  // } else if (ingredientLines === "PinotNoir") {
-  //   wQueryURL.append("pinot_noir");
-  // } else if (ingredientLines === "Syrah") {
-  //   wQueryURL.append("syrah");
-  // } else if (ingredientLines === "Merlot") {
-  //   wQueryURL.append("merlot");
-  // } else if (ingredientLines === "CabernetSauvignon") {
-  //   wQueryURL.append("cabernet_sauvignon");
-  // } else if (ingredientLines === "Chardonnay") {
-  //   wQueryURL.append("chardonnay");
-  // };
-  // console.log(wQueryURL);
-  // // $("#paired-wine")
-  // // $("#page1").hide();
-  // // $("#page2").hide();
-  // // $("#page3").show();
+  
 });
 
 
-var firebaseConfig = {
+  //=========================================//
+ //----------------Database-----------------//
+//=========================================//
+ var firebaseConfig = {
+
   apiKey: "AIzaSyAR2StH0_4srWKYV2SMNXerJX1_jzHijmk",
   authDomain: "butler-database.firebaseapp.com",
   databaseURL: "https://butler-database.firebaseio.com",
@@ -314,15 +347,12 @@ var db = firebase.database();
 
 var connectionsRef = db.ref("/connections");
 
-// '.info/connected' is a special location provided by Firebase that is updated
-// every time the client's connection state changes.
-// '.info/connected' is a boolean value, true if the client is connected and false if they are not.
 var connectedRef = db.ref(".info/connected");
 
-// When the client's connection state changes...
-connectedRef.on("value", function (snap) {
 
-  // If they are connected..
+connectedRef.on("value", function(snap) {
+
+
   if (snap.val()) {
 
     // Add user to the connections list.
