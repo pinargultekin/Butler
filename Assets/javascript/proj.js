@@ -237,7 +237,9 @@ $(document).on('click', ".wineButton", function () {
   // // $("#page3").show();
 });
 
-
+  //=========================================//
+ //----------------Database-----------------//
+//=========================================//
  var firebaseConfig = {
   apiKey: "AIzaSyAR2StH0_4srWKYV2SMNXerJX1_jzHijmk",
   authDomain: "butler-database.firebaseapp.com",
@@ -254,15 +256,10 @@ var db = firebase.database();
 
 var connectionsRef = db.ref("/connections");
 
-// '.info/connected' is a special location provided by Firebase that is updated
-// every time the client's connection state changes.
-// '.info/connected' is a boolean value, true if the client is connected and false if they are not.
 var connectedRef = db.ref(".info/connected");
 
-// When the client's connection state changes...
 connectedRef.on("value", function(snap) {
 
-  // If they are connected..
   if (snap.val()) {
 
     // Add user to the connections list.
