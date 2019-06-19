@@ -1,22 +1,7 @@
-// const firebaseConfig = {
-//   apiKey: "AIzaSyBBDgBqGMtIDNTScDk9-LajgqBSOTkURb0",
-//   authDomain: "food-wine-project.firebaseapp.com",
-//   databaseURL: "https://food-wine-project.firebaseio.com",
-//   projectId: "food-wine-project",
-//   storageBucket: "food-wine-project.appspot.com",
-//   messagingSenderId: "760442689212",
-//   appId: "1:760442689212:web:7b64254f6a203455"
-// };
-// firebase.initializeApp(firebaseConfig);
 
-// // Create a variable to reference the database
-// var db = firebase.database();
-// var results = $.ajax({
-//   url: queryURL,
-//   method: "GET"
-//   }).then(function(response) {
-//   console.log(response);
-// });
+// Create a variable to reference the database
+
+
 
 var resultsDummy = "dummy results";
 
@@ -64,14 +49,44 @@ var recipeResults = function () {
 
 };
 
-$("#submitIngredient").on("click", function (event) {
-  event.preventDefault();
-  var ingredient = $("#ingredient-input").val().trim();
-  $("#ingredientList").append(
-    "<li class='list-group-item'>" + ingredient + "</li>");
-  list.push(ingredient);
-  console.log(list);
-  $("#ingredient-input").val("");
+
+$("#submitIngredient").on("click", function(event) {
+    event.preventDefault();
+    var ingredient = $("#ingredient-input").val().trim();
+    $("#ingredientList").append( 
+        "<button id='ingredient' class='list-group-item'>"+ingredient+"</button>");
+    list.push(ingredient);
+    console.log(list); 
+    $("#ingredient-input").val("");
+
+});
+
+// Get the input field
+var input = document.getElementById("ingredient-input");
+
+// Execute a function when the user releases a key on the keyboard
+input.addEventListener("keyup", function(event) {
+  // Number 13 is the "Enter" key on the keyboard
+  if (event.keyCode === 13) {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Trigger the button element with a click
+    document.getElementById("submitIngredient").click();
+  }
+});
+
+$(document.body).on("click", ".list-group-item", function() {
+  var ingredientToRemove = $(this).text();
+  console.log(ingredientToRemove);
+  // Get the number of the button from its data attribute and hold in a variable called  toDoNumber.
+  $(this).remove();
+  for (var i=list.length-1; i>=0; i--) {
+    if (list[i] === ingredientToRemove) {
+        list.splice(i, 1);
+        // break;       //<-- Uncomment  if only the first term has to be removed
+    };
+};
+console.log(list);
 });
 
 var list = [];
@@ -117,6 +132,7 @@ var wQueryURL = "https://cors-anywhere.herokuapp.com/https://api.globalwinescore
 $.ajax({
   url: wQueryURL,
   method: "GET",
+
   headers: { 'Authorization': 'Token 4d786bd8008d8fed360a5eb1a42ac9970ca664ba' }
 }).then(function (response) {
 
@@ -125,6 +141,11 @@ $.ajax({
 });
 
 
+
+  headers: {'Authorization': 'Token 4d786bd8008d8fed360a5eb1a42ac9970ca664ba'}
+}).then(function(response) {
+  console.log(response);
+});
 
 // document.getElementsByClassName("wineButton").on("click", function (event) {
 $(document).on('click', ".wineButton", function () {
@@ -228,6 +249,36 @@ $(document).on('click', ".wineButton", function () {
 });
 
 
+ var firebaseConfig = {
+  apiKey: "AIzaSyAR2StH0_4srWKYV2SMNXerJX1_jzHijmk",
+  authDomain: "butler-database.firebaseapp.com",
+  databaseURL: "https://butler-database.firebaseio.com",
+  projectId: "butler-database",
+  storageBucket: "butler-database.appspot.com",
+  messagingSenderId: "515778616275",
+  appId: "1:515778616275:web:57fb705dfc982415"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 
+var db = firebase.database();
 
+var connectionsRef = db.ref("/connections");
 
+// '.info/connected' is a special location provided by Firebase that is updated
+// every time the client's connection state changes.
+// '.info/connected' is a boolean value, true if the client is connected and false if they are not.
+var connectedRef = db.ref(".info/connected");
+
+// When the client's connection state changes...
+connectedRef.on("value", function(snap) {
+
+  // If they are connected..
+  if (snap.val()) {
+
+    // Add user to the connections list.
+    var con = connectionsRef.push(true);
+    // Remove user from the connection list when they disconnect.
+    con.onDisconnect().remove();
+  }
+});
