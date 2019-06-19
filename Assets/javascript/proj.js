@@ -36,7 +36,7 @@ var recipeResults = function () {
       rdiv.prepend(img, name, foot);
       $("#rec-demo").prepend(rdiv);
     }
-    console.log(rResults[0].recipe.ingredientLines);
+    // console.log(rResults[0].recipe.ingredientLines);
 
 
   }).done(function (response) {
@@ -50,14 +50,14 @@ var recipeResults = function () {
 };
 
 
-$("#submitIngredient").on("click", function(event) {
-    event.preventDefault();
-    var ingredient = $("#ingredient-input").val().trim();
-    $("#ingredientList").append( 
-        "<button id='ingredient' class='list-group-item'>"+ingredient+"</button>");
-    list.push(ingredient);
-    console.log(list); 
-    $("#ingredient-input").val("");
+$("#submitIngredient").on("click", function (event) {
+  event.preventDefault();
+  var ingredient = $("#ingredient-input").val().trim();
+  $("#ingredientList").append(
+    "<button id='ingredient' class='list-group-item'>" + ingredient + "</button>");
+  list.push(ingredient);
+  console.log(list);
+  $("#ingredient-input").val("");
 
 });
 
@@ -65,7 +65,7 @@ $("#submitIngredient").on("click", function(event) {
 var input = document.getElementById("ingredient-input");
 
 // Execute a function when the user releases a key on the keyboard
-input.addEventListener("keyup", function(event) {
+input.addEventListener("keyup", function (event) {
   // Number 13 is the "Enter" key on the keyboard
   if (event.keyCode === 13) {
     // Cancel the default action, if needed
@@ -75,18 +75,18 @@ input.addEventListener("keyup", function(event) {
   }
 });
 
-$(document.body).on("click", ".list-group-item", function() {
+$(document.body).on("click", ".list-group-item", function () {
   var ingredientToRemove = $(this).text();
   console.log(ingredientToRemove);
   // Get the number of the button from its data attribute and hold in a variable called  toDoNumber.
   $(this).remove();
-  for (var i=list.length-1; i>=0; i--) {
+  for (var i = list.length - 1; i >= 0; i--) {
     if (list[i] === ingredientToRemove) {
-        list.splice(i, 1);
-        // break;       //<-- Uncomment  if only the first term has to be removed
+      list.splice(i, 1);
+      // break;       //<-- Uncomment  if only the first term has to be removed
     };
-};
-console.log(list);
+  };
+  console.log(list);
 });
 
 var list = [];
@@ -127,9 +127,22 @@ var Chardonnay = ["beef", "chicken", "pork", "fish", "shrimp", "crab", "lobster"
 
 
 
-var wQueryURL = "https://cors-anywhere.herokuapp.com/https://api.globalwinescore.com/globalwinescores/latest/?wine=";
+
+// var wQueryURL = "https://cors-anywhere.herokuapp.com/https://api.globalwinescore.com/globalwinescores/latest/?wine=" + vine;
+
+// $.ajax({
+//   url: wQueryURL,
+//   method: "GET",
+
+//   headers: { 'Authorization': 'Token 4d786bd8008d8fed360a5eb1a42ac9970ca664ba' }
+// }).then(function (response) {
+
+//   console.log(response);
+
+// });
 
 // document.getElementsByClassName("wineButton").on("click", function (event) {
+
 $(document).on('click', ".wineButton", function () {
   event.preventDefault();
 
@@ -174,22 +187,74 @@ $(document).on('click', ".wineButton", function () {
   console.log(Chardonnaymatches);
 
   // wineMatches = [];
-
-
-
   // wineMatches.push(Blancmatches, Pinotmatches, Syrahmatches, Merlotmatches, Cabernetmatches, Chardonnaymatches);
   // console.log(wineMatches);
 
-  function getWine (){
-    if ((Blancmatches > Pinotmatches) && (Blancmatches > Syrahmatches) && (Blancmatches > Merlotmatches ) && (Blancmatches > Cabernetmatches ) && (Blancmatches > Chardonnaymatches )) {
+  function getWine() {
+    if ((Blancmatches > Pinotmatches) && (Blancmatches > Syrahmatches) && (Blancmatches > Merlotmatches) && (Blancmatches > Cabernetmatches) && (Blancmatches > Chardonnaymatches)) {
       wQueryURL = "https://cors-anywhere.herokuapp.com/https://api.globalwinescore.com/globalwinescores/latest/?wine=Sauvignon_Blanc"
-     
-      console.log("Sauvignon Blanc");
+
       $.ajax({
-      url: wQueryURL,
-      method: "GET",
-      headers: {'Authorization': 'Token 4d786bd8008d8fed360a5eb1a42ac9970ca664ba'}
-      }).then(function(response) {
+        url: wQueryURL,
+        method: "GET",
+        headers: { 'Authorization': 'Token 4d786bd8008d8fed360a5eb1a42ac9970ca664ba' }
+      }).then(function (response) {
+
+        var wResults= response;
+        for(var n=0; n<wResults.length; n++){
+        var wineDiv = $("<div>");
+        var p = $("<p>").text("Recommended Wine: " + wResults[n].wine);
+        
+        wineDiv.append(p);
+        $("#wine-demo").append(wineDiv);
+        }
+        console.log(wResults[n].results.wine);
+      });
+      
+    } else if ((Pinotmatches > Blancmatches) && (Pinotmatches > Syrahmatches) && (Pinotmatches > Merlotmatches) && (Pinotmatches > Cabernetmatches) && (Pinotmatches > Chardonnaymatches)) {
+      wQueryURL = "https://cors-anywhere.herokuapp.com/https://api.globalwinescore.com/globalwinescores/latest/?wine=Pinot_Noir"
+      $.ajax({
+        url: wQueryURL,
+        method: "GET",
+        headers: { 'Authorization': 'Token 4d786bd8008d8fed360a5eb1a42ac9970ca664ba' }
+      }).then(function (response) {
+        console.log(response);
+      });
+    } else if ((Syrahmatches > Blancmatches) && (Syrahmatches > Pinotmatches) && (Syrahmatches > Merlotmatches) && (Syrahmatches > Cabernetmatches) && (Syrahmatches > Chardonnaymatches)) {
+      wQueryURL = "https://cors-anywhere.herokuapp.com/https://api.globalwinescore.com/globalwinescores/latest/?wine=Syrah"
+      $.ajax({
+        url: wQueryURL,
+        method: "GET",
+        headers: { 'Authorization': 'Token 4d786bd8008d8fed360a5eb1a42ac9970ca664ba' }
+      }).then(function (response) {
+        console.log(response);
+      });
+    } else if ((Merlotmatches > Blancmatches) && (Merlotmatches > Pinotmatches) && (Merlotmatches > Syrahmatches) && (Merlotmatches > Cabernetmatches) && (Merlotmatches > Chardonnaymatches)) {
+      wQueryURL = "https://cors-anywhere.herokuapp.com/https://api.globalwinescore.com/globalwinescores/latest/?wine=Merlot"
+      $.ajax({
+        url: wQueryURL,
+        method: "GET",
+        headers: { 'Authorization': 'Token 4d786bd8008d8fed360a5eb1a42ac9970ca664ba' }
+      }).then(function (response) {
+        console.log(response);
+      });
+    } else if ((Cabernetmatches > Blancmatches) && (Cabernetmatches > Pinotmatches) && (Cabernetmatches > Syrahmatches) && (Cabernetmatches > Merlotmatches) && (Cabernetmatches > Chardonnaymatches)) {
+      wQueryURL = "https://cors-anywhere.herokuapp.com/https://api.globalwinescore.com/globalwinescores/latest/?wine=Cabernet_Sauvignon"
+      $.ajax({
+        url: wQueryURL,
+        method: "GET",
+        headers: { 'Authorization': 'Token 4d786bd8008d8fed360a5eb1a42ac9970ca664ba' }
+      }).then(function (response) {
+        console.log(response);
+      });
+    } else if ((Chardonnaymatches > Blancmatches) && (Chardonnaymatches > Pinotmatches) && (Chardonnaymatches > Syrahmatches) && (Chardonnaymatches > Merlotmatches) && (Chardonnaymatches > Cabernetmatches)) {
+      wQueryURL = "https://cors-anywhere.herokuapp.com/https://api.globalwinescore.com/globalwinescores/latest/?wine=Chardonnay"
+      $.ajax({
+        url: wQueryURL,
+        method: "GET",
+        headers: { 'Authorization': 'Token 4d786bd8008d8fed360a5eb1a42ac9970ca664ba' }
+      }).then(function (response) {
+
         console.log(response);
       });
     } else {
@@ -197,6 +262,13 @@ $(document).on('click', ".wineButton", function () {
     }
   }
   getWine();
+
+  // wdiv = $("<div class='card' id='wine'");
+  // var recWine = $("<div class='card-body px-5'>");
+  // recWine.append("<a href='" + response.url + "' target='blank' class='card-title'>" + response + "</a>");
+  // wdiv.append(recWine);
+  // $("#rec-demo").append(wdiv);
+
 
   // var max= function(wineMatches) {
   //   maxNum= wineMatches[0];
@@ -209,13 +281,6 @@ $(document).on('click', ".wineButton", function () {
   //   // wineMatchNum = maxNum;
   // }
   // console.log(max(wineMatches));
-  
-
-
-  
-
-
-
   // if (ingredientLines === "SauvignonBlanc") {
   //   wQueryURL.append("sauvignon_blanc");
   // } else if (ingredientLines === "PinotNoir") {
@@ -230,17 +295,18 @@ $(document).on('click', ".wineButton", function () {
   //   wQueryURL.append("chardonnay");
   // };
   // console.log(wQueryURL);
-
   // // $("#paired-wine")
   // // $("#page1").hide();
   // // $("#page2").hide();
   // // $("#page3").show();
 });
 
+
   //=========================================//
  //----------------Database-----------------//
 //=========================================//
  var firebaseConfig = {
+
   apiKey: "AIzaSyAR2StH0_4srWKYV2SMNXerJX1_jzHijmk",
   authDomain: "butler-database.firebaseapp.com",
   databaseURL: "https://butler-database.firebaseio.com",
@@ -258,7 +324,9 @@ var connectionsRef = db.ref("/connections");
 
 var connectedRef = db.ref(".info/connected");
 
+
 connectedRef.on("value", function(snap) {
+
 
   if (snap.val()) {
 
