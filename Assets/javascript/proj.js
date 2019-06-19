@@ -42,10 +42,38 @@ $("#submitIngredient").on("click", function(event) {
     event.preventDefault();
     var ingredient = $("#ingredient-input").val().trim();
     $("#ingredientList").append( 
-        "<li class='list-group-item'>"+ingredient+"</li>");
+        "<button id='ingredient' class='list-group-item'>"+ingredient+"</button>");
     list.push(ingredient);
     console.log(list); 
     $("#ingredient-input").val("");
+});
+
+// Get the input field
+var input = document.getElementById("ingredient-input");
+
+// Execute a function when the user releases a key on the keyboard
+input.addEventListener("keyup", function(event) {
+  // Number 13 is the "Enter" key on the keyboard
+  if (event.keyCode === 13) {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Trigger the button element with a click
+    document.getElementById("submitIngredient").click();
+  }
+});
+
+$(document.body).on("click", ".list-group-item", function() {
+  var ingredientToRemove = $(this).text();
+  console.log(ingredientToRemove);
+  // Get the number of the button from its data attribute and hold in a variable called  toDoNumber.
+  $(this).remove();
+  for (var i=list.length-1; i>=0; i--) {
+    if (list[i] === ingredientToRemove) {
+        list.splice(i, 1);
+        // break;       //<-- Uncomment  if only the first term has to be removed
+    };
+};
+console.log(list);
 });
 
 var list = [];
@@ -91,11 +119,8 @@ $.ajax({
   method: "GET",
   headers: {'Authorization': 'Token 4d786bd8008d8fed360a5eb1a42ac9970ca664ba'}
 }).then(function(response) {
-
-
-  console.log(wineRseults);
-
-  });
+  console.log(response);
+});
  
 
  $("#wine-pair").on("click", function (event){
