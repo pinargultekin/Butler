@@ -127,21 +127,11 @@ var Chardonnay = ["beef", "chicken", "pork", "fish", "shrimp", "crab", "lobster"
 
 
 
-var wQueryURL = "https://cors-anywhere.herokuapp.com/https://api.globalwinescore.com/globalwinescores/latest/?wine="+vine;
+var wQueryURL = "https://cors-anywhere.herokuapp.com/https://api.globalwinescore.com/globalwinescores/latest/?wine=";
 
 $.ajax({
   url: wQueryURL,
   method: "GET",
-
-  headers: { 'Authorization': 'Token 4d786bd8008d8fed360a5eb1a42ac9970ca664ba' }
-}).then(function (response) {
-
-  console.log(response);
-
-});
-
-
-
   headers: {'Authorization': 'Token 4d786bd8008d8fed360a5eb1a42ac9970ca664ba'}
 }).then(function(response) {
   console.log(response);
