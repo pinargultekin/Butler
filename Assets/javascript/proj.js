@@ -22,6 +22,8 @@ var resultsDummy = "dummy results";
 
 var output = "";
 var itemSearch = "";
+
+var vine = "";
 // var queryURL = "https://api.edamam.com/search?q="+itemSearch+"&app_id=cd0febb4&app_key=6d1400c54461c5fb357e208675e77e00&from=0&to=3";
 
 var rResults;
@@ -33,7 +35,7 @@ var recipeResults = function () {
     method: "GET"
   }).then(function (response) {
 
-  
+
     rResults = response.hits;
 
     console.log(rResults);
@@ -51,8 +53,8 @@ var recipeResults = function () {
     }
     console.log(rResults[0].recipe.ingredientLines);
 
-    
-  }).done(function(response) {
+
+  }).done(function (response) {
     // var wResult;
     // wResult= response.hits;
     // return wResult;
@@ -100,17 +102,17 @@ $(document).ready(function () {
 // Wine API Integration
 
 
-pairing = {
-  SauvignonBlanc: ["chicken", "turkey", "pork", "oyster", "scallop", "lobster", "shrimp", "asparagus", "chives", "cilantro"],
-  PinotNoir: ["lamb", "sausage", "filet mignon", "chicken", "tuna", "salmon", "mushroom", "nutmeg", "cinnamon", "clove"],
-  Syrah: ["pepperoni", "sausage", "pork", "tuna", "salmon", "beets", "tomato", "oregano", "sage"],
-  Merlot: ["steak", "grilled", "tuna", "onion", "tomato", "mint", "rosemary"],
-  CabernetSauvignon: ["venison", "rib eye", "beef", "tuna", "broccoli", "tomato", "rosemary"],
-  Chardonnay: ["beef", "chicken", "pork", "fish", "shrimp", "crab", "lobster", "patato", "squash", "basil", "sesame"]
-}
+
+var SauvignonBlanc = ["chicken", "turkey", "pork", "oyster", "scallop", "lobster", "shrimp", "asparagus", "chive", "cilantro"];
+var PinotNoir = ["lamb", "sausage", "filet mignon", "chicken", "tuna", "salmon", "mushroom", "nutmeg", "cinnamon", "clove"];
+var Syrah = ["pepperoni", "sausage", "pork", "tuna", "salmon", "beets", "tomato", "oregano", "sage"];
+var Merlot = ["steak", "grilled", "tuna", "onion", "tomato", "mint", "rosemary"];
+var CabernetSauvignon = ["venison", "rib eye", "beef", "tuna", "broccoli", "tomato", "rosemary"];
+var Chardonnay = ["beef", "chicken", "pork", "fish", "shrimp", "crab", "lobster", "patato", "squash", "basil", "sesame"];
 
 
-var wQueryURL = 'https://cors-anywhere.herokuapp.com/https://api.globalwinescore.com/globalwinescores/latest/?wine=' + '';
+
+var wQueryURL = "https://cors-anywhere.herokuapp.com/https://api.globalwinescore.com/globalwinescores/latest/?wine="+vine;
 
 $.ajax({
   url: wQueryURL,
@@ -128,12 +130,79 @@ $.ajax({
 $(document).on('click', ".wineButton", function () {
   event.preventDefault();
 
-  console.log("Clicked!");
-  var clickedRecipe = $(this).attr("id");
-  console.log(clickedRecipe);
-  console.log(rResults[clickedRecipe].recipe.ingredientLines);
-  var ingredientArray= rResults[clickedRecipe].recipe.ingredientLines;
+  // console.log("Clicked!");
+  // var clickedRecipe = $(this).attr("id");
+  // console.log(clickedRecipe);
+  // console.log(rResults[clickedRecipe].recipe.ingredientLines);
 
+  // var ingredientArray = rResults[clickedRecipe].recipe.ingredientLines;
+  // var match = list.find(val => SauvignonBlanc.includes(val))
+  // console.log(match);
+
+  function arrayMatch(a, b) {
+    var matches = [];
+
+    for (var i = 0; i < a.length; i++) {
+      for (var e = 0; e < b.length; e++) {
+        if (a[i] === b[e]) matches.push(a[i]);
+      }
+    }
+    return matches;
+  }
+  // console.log(arrayMatch(list, SauvignonBlanc).length);
+  // console.log(arrayMatch(list, PinotNoir).length);
+  // console.log(arrayMatch(list, Syrah).length);
+  // console.log(arrayMatch(list, Merlot).length);
+  // console.log(arrayMatch(list, CabernetSauvignon).length);
+  // console.log(arrayMatch(list, Chardonnay).length);
+
+  var Blancmatches = arrayMatch(list, SauvignonBlanc).length;
+  var Pinotmatches = arrayMatch(list, PinotNoir).length;
+  var Syrahmatches = arrayMatch(list, Syrah).length;
+  var Merlotmatches = arrayMatch(list, Merlot).length;
+  var Cabernetmatches = arrayMatch(list, CabernetSauvignon).length;
+  var Chardonnaymatches = arrayMatch(list, Chardonnay).length;
+
+  console.log(Blancmatches);
+  console.log(Pinotmatches);
+  console.log(Syrahmatches);
+  console.log(Merlotmatches);
+  console.log(Cabernetmatches);
+  console.log(Chardonnaymatches);
+
+  // wineMatches = [];
+
+
+
+  // wineMatches.push(Blancmatches, Pinotmatches, Syrahmatches, Merlotmatches, Cabernetmatches, Chardonnaymatches);
+  // console.log(wineMatches);
+
+  function getWine (){
+    if ((Blancmatches > Pinotmatches) && (Blancmatches > Syrahmatches) && (Blancmatches > Merlotmatches ) && (Blancmatches > Cabernetmatches ) && (Blancmatches > Chardonnaymatches )) {
+      wQueryURL = "https://cors-anywhere.herokuapp.com/https://api.globalwinescore.com/globalwinescores/latest/?wine=Sauvignon_Blanc"
+     
+      console.log("Sauvignon Blanc");
+    } else {
+      return;
+    }
+  }
+  getWine();
+
+  // var max= function(wineMatches) {
+  //   maxNum= wineMatches[0];
+  //   for(var l=0; l<wineMatches.length; l++) {
+  //     if(wineMatches[l]> maxNum) {
+  //       maxNum= wineMatches[l];
+  //     }
+  //   }
+  //   return maxNum;
+  //   // wineMatchNum = maxNum;
+  // }
+  // console.log(max(wineMatches));
+  
+
+
+  
 
 
 
