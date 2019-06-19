@@ -191,15 +191,23 @@ $(document).on('click', ".wineButton", function () {
   function getWine() {
     if ((Blancmatches > Pinotmatches) && (Blancmatches > Syrahmatches) && (Blancmatches > Merlotmatches) && (Blancmatches > Cabernetmatches) && (Blancmatches > Chardonnaymatches)) {
       wQueryURL = "https://cors-anywhere.herokuapp.com/https://api.globalwinescore.com/globalwinescores/latest/?wine=Sauvignon_Blanc"
-      console.log("Sauvignon Blanc");
-      
       $.ajax({
         url: wQueryURL,
         method: "GET",
         headers: { 'Authorization': 'Token 4d786bd8008d8fed360a5eb1a42ac9970ca664ba' }
       }).then(function (response) {
-        console.log(response);
+
+        var wResults= response;
+        for(var n=0; n<wResults.length; n++){
+        var wineDiv = $("<div>");
+        var p = $("<p>").text("Recommended Wine: " + wResults[n].wine);
+        
+        wineDiv.append(p);
+        $("#wine-demo").append(wineDiv);
+        }
+        console.log(wResults[n].results.wine);
       });
+      
     } else if ((Pinotmatches > Blancmatches) && (Pinotmatches > Syrahmatches) && (Pinotmatches > Merlotmatches) && (Pinotmatches > Cabernetmatches) && (Pinotmatches > Chardonnaymatches)) {
       wQueryURL = "https://cors-anywhere.herokuapp.com/https://api.globalwinescore.com/globalwinescores/latest/?wine=Pinot_Noir"
       $.ajax({
@@ -227,7 +235,7 @@ $(document).on('click', ".wineButton", function () {
       }).then(function (response) {
         console.log(response);
       });
-    }else if ((Cabernetmatches > Blancmatches) && (Cabernetmatches > Pinotmatches) && (Cabernetmatches > Syrahmatches) && (Cabernetmatches > Merlotmatches) && (Cabernetmatches > Chardonnaymatches)) {
+    } else if ((Cabernetmatches > Blancmatches) && (Cabernetmatches > Pinotmatches) && (Cabernetmatches > Syrahmatches) && (Cabernetmatches > Merlotmatches) && (Cabernetmatches > Chardonnaymatches)) {
       wQueryURL = "https://cors-anywhere.herokuapp.com/https://api.globalwinescore.com/globalwinescores/latest/?wine=Cabernet_Sauvignon"
       $.ajax({
         url: wQueryURL,
@@ -236,7 +244,7 @@ $(document).on('click', ".wineButton", function () {
       }).then(function (response) {
         console.log(response);
       });
-    }else if ((Chardonnaymatches > Blancmatches) && (Chardonnaymatches > Pinotmatches) && (Chardonnaymatches > Syrahmatches) && (Chardonnaymatches > Merlotmatches) && (Chardonnaymatches > Cabernetmatches)) {
+    } else if ((Chardonnaymatches > Blancmatches) && (Chardonnaymatches > Pinotmatches) && (Chardonnaymatches > Syrahmatches) && (Chardonnaymatches > Merlotmatches) && (Chardonnaymatches > Cabernetmatches)) {
       wQueryURL = "https://cors-anywhere.herokuapp.com/https://api.globalwinescore.com/globalwinescores/latest/?wine=Chardonnay"
       $.ajax({
         url: wQueryURL,
@@ -245,12 +253,18 @@ $(document).on('click', ".wineButton", function () {
       }).then(function (response) {
         console.log(response);
       });
-    }else {
+    } else {
       return;
     }
   }
-  $("#page2").append(getWine());
   getWine();
+
+  // wdiv = $("<div class='card' id='wine'");
+  // var recWine = $("<div class='card-body px-5'>");
+  // recWine.append("<a href='" + response.url + "' target='blank' class='card-title'>" + response + "</a>");
+  // wdiv.append(recWine);
+  // $("#rec-demo").append(wdiv);
+
 
   // var max= function(wineMatches) {
   //   maxNum= wineMatches[0];
