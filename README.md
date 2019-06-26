@@ -1,11 +1,41 @@
 # Butler
+---------------
+## Table of Contents
+1. [Abstract](#abstract)
+2. [Coding Overview](#overview)
+3. [Application Display](#display)
 
-Welcome to the Butler App!
+<a name="abstract"></a>
+## Abstract
 
-The Butler application is here to help with your dinner plans. Your personal butler will take ingredients you already have and give you custom tailored recipe results. Once you have made your recipe selection, your personal Butler will gladly suggest a wine to go with your meal. 
+The Butler application is designed to help users with limited ingredients to make something great to pair with an appropriate wine. 
+The app calls two APIs, the first of (Edamam API) which generates dish options for users after they input particular ingredients.
+The results from this output then communicates with the second API (Global Wine Score API) to determine which wine would pair best with the dish the user selected.
 
 Collaborators: AJ Weber, Jeff Froehlich, Pinar Gultekin
 
-This app is designed to help users with limited ingredients to make something great to pair with an appropriate wine! 
-The app will call two APIs (TBD)--the first of which will generate dish options for users after they input particular ingredients. The results from this output will then communicate with the second API (wine API) to determine which wine would pair best with the dish the user selected.
+<a name="overview"></a>
+## Coding Overview
 
+The application is built with;
+* HTML
+* CSS
+* Bootstrap
+* JavaScript
+* jQuery
+* Firebase
+* Edamam API & Global Wine Score API
+
+
+Application link is : https://ajweber102.github.io/Butler/
+
+
+<a name="display"></a>
+## Application Display
+<img src="assets/images/butler1.PNG" alt="app-display">
+<br>
+<img src="assets/images/butler2.PNG" alt="app-display">
+<br>
+<img src="assets/images/butler3.PNG" alt="app-display">
+<br>
+<img src="assets/images/butler4.PNG" alt="app-display">
