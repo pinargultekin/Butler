@@ -32,10 +32,10 @@ Application link is : https://ajweber102.github.io/Butler/
 
 <a name="display"></a>
 ## Application Display
-<img src="assets/images/butler1.PNG" alt="app-display">
+<img src="Assets/images/butler1.PNG" alt="app-display">
 <br>
-<img src="assets/images/butler2.PNG" alt="app-display">
+<img src="Assets/images/butler2.PNG" alt="app-display">
 <br>
-<img src="assets/images/butler3.PNG" alt="app-display">
+<img src="Assets/images/butler3.PNG" alt="app-display">
 <br>
-<img src="assets/images/butler4.PNG" alt="app-display">
+<img src="Assets/images/butler4.PNG" alt="app-display">
