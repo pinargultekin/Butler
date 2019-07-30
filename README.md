@@ -21,6 +21,7 @@ The application is built with;
 * HTML
 * CSS
 * Bootstrap
+* Figma
 * JavaScript
 * jQuery
 * Firebase
