@@ -192,7 +192,7 @@ $(document).on('click', ".wineButton", function () {
       $.ajax({
         url: wQueryURL,
         method: "GET",
-        headers: { 'Authorization': 'Token 4d786bd8008d8fed360a5eb1a42ac9970ca664ba' }
+        headers: { 'Authorization': 'Token 17d525b6f7d758fa658f9c6def6952a974056afa' }
       }).then(function (response) {
 
         var results= response.results;
@@ -200,6 +200,7 @@ $(document).on('click', ".wineButton", function () {
         for(var i=0; i<results.length; i++){
           console.log(results[0].wine);
           $("#wine-demo").show();
+          $("#loading").hide();
           $("#vine").text( "According to your choice of dish we recommend : " + results[0].wine);
         
         }
@@ -211,13 +212,14 @@ $(document).on('click', ".wineButton", function () {
       $.ajax({
         url: wQueryURL,
         method: "GET",
-        headers: { 'Authorization': 'Token 4d786bd8008d8fed360a5eb1a42ac9970ca664ba' }
+        headers: { 'Authorization': 'Token 17d525b6f7d758fa658f9c6def6952a974056afa' }
       }).then(function (response) {
        
         var results= response.results;
 
         for(var i=0; i<results.length; i++){
           console.log(results[0].wine);
+          $("#loading").hide();
           $("#wine-demo").show();
           $("#vine").text( "According to your choice of dish we recommend : " + results[0].wine);
         
@@ -230,7 +232,7 @@ $(document).on('click', ".wineButton", function () {
       $.ajax({
         url: wQueryURL,
         method: "GET",
-        headers: { 'Authorization': 'Token 4d786bd8008d8fed360a5eb1a42ac9970ca664ba' }
+        headers: { 'Authorization': 'Token 17d525b6f7d758fa658f9c6def6952a974056afa' }
       }).then(function (response) {
        
         var results= response.results;
@@ -238,6 +240,7 @@ $(document).on('click', ".wineButton", function () {
         for(var i=0; i<results.length; i++){
           console.log(results[0].wine);
           $("#wine-demo").show();
+          $("#loading").hide();
           $("#vine").text( "According to your choice of dish we recommend : " + results[0].wine);
         
         }
@@ -249,7 +252,7 @@ $(document).on('click', ".wineButton", function () {
       $.ajax({
         url: wQueryURL,
         method: "GET",
-        headers: { 'Authorization': 'Token 4d786bd8008d8fed360a5eb1a42ac9970ca664ba' }
+        headers: { 'Authorization': 'Token 17d525b6f7d758fa658f9c6def6952a974056afa' }
       }).then(function (response) {
         
         var results= response.results;
@@ -257,6 +260,7 @@ $(document).on('click', ".wineButton", function () {
         for(var i=0; i<results.length; i++){
           console.log(results[0].wine);
           $("#wine-demo").show();
+          $("#loading").hide();
           $("#vine").text( "According to your choice of dish we recommend : " + results[0].wine);
         
         }
@@ -268,7 +272,7 @@ $(document).on('click', ".wineButton", function () {
       $.ajax({
         url: wQueryURL,
         method: "GET",
-        headers: { 'Authorization': 'Token 4d786bd8008d8fed360a5eb1a42ac9970ca664ba' }
+        headers: { 'Authorization': 'Token 17d525b6f7d758fa658f9c6def6952a974056afa' }
       }).then(function (response) {
         
         var results= response.results;
@@ -276,6 +280,7 @@ $(document).on('click', ".wineButton", function () {
         for(var i=0; i<results.length; i++){
           console.log(results[0].wine);
           $("#wine-demo").show();
+          $("#loading").hide();
           $("#vine").text( "According to your choice of dish we recommend : " + results[0].wine);
         
         }
@@ -287,7 +292,7 @@ $(document).on('click', ".wineButton", function () {
       $.ajax({
         url: wQueryURL,
         method: "GET",
-        headers: { 'Authorization': 'Token 4d786bd8008d8fed360a5eb1a42ac9970ca664ba' }
+        headers: { 'Authorization': 'Token 17d525b6f7d758fa658f9c6def6952a974056afa' }
       }).then(function (response) {
 
         var results= response.results;
@@ -295,6 +300,7 @@ $(document).on('click', ".wineButton", function () {
         for(var i=0; i<results.length; i++){
           console.log(results[0].wine);
           $("#wine-demo").show();
+          $("#loading").hide();
           $("#vine").text( "According to your choice of dish we recommend : " + results[0].wine);
         
         }

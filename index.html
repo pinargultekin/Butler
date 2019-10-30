@@ -16,7 +16,7 @@
     <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
     <script src="https://developer.edamam.com/attribution/badge.js"></script>
     <link rel="shortcut icon" href="Assets/images/favicon-16x16.png" type="image/x-icon">
- 
+
     <title>Butler</title>
 </head>
 
@@ -63,9 +63,11 @@
         <div class="row">
             <section id="ingr">
                 <div class="card-deck m-0" id="rec-demo" style="width: 100%;"></div>
-
+                <div id='loading' class="text-center col-md-12">
+                    <img src="Assets/images/loading.svg" alt="Loading" style="height:80px; text-align: center;">
+                </div>
                 <div id="wine-demo">
-                    <p> <span id="vine"></span></p>
+                    <div id="wineCont"> <span id="vine"></span></div>
                 </div>
 
             </section>
@@ -75,9 +77,9 @@
     <br>
 
     <footer class="footer">
-        
-            &copy; Copyright 2019 Butler by TeamTwo
-            <div id="edamam-badge" data-color="white"> </div>
+
+        &copy; Copyright 2019 Butler by TeamTwo
+        <div id="edamam-badge" data-color="white"> </div>
     </footer>
 
     <!-- JQuery -->
@@ -89,10 +91,9 @@
 
 </body>
 
-  <!-- The core Firebase JS SDK is always required and must be listed first --
+<!-- The core Firebase JS SDK is always required and must be listed first --
      TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#config-web-app -->
 
 
 </html>
-
