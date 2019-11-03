@@ -28,7 +28,7 @@ The application is built with;
 * Edamam API & Global Wine Score API
 
 
-Application link is : https://ajweber102.github.io/Butler/
+Application link is : https://pinargultekin.github.io/Butler/
 
 
 <a name="display"></a>
