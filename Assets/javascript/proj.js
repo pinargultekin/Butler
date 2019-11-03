@@ -140,7 +140,7 @@ var Chardonnay = ["beef", "chicken", "pork", "fish", "shrimp", "crab", "lobster"
 
 $(document).on('click', ".wineButton", function () {
   event.preventDefault();
-
+$("#loading").show();
   // console.log("Clicked!");
   // var clickedRecipe = $(this).attr("id");
   // console.log(clickedRecipe);
