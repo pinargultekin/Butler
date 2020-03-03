@@ -53,12 +53,15 @@ var recipeResults = function () {
 $("#submitIngredient").on("click", function (event) {
   event.preventDefault();
   var ingredient = $("#ingredient-input").val().trim();
+  if(ingredient === ""){
+    alert("Please enter a valid ingredient");
+  }else{
   $("#ingredientList").append(
     "<button id='ingredient' class='list-group-item'>" + ingredient + "</button>");
   list.push(ingredient);
   console.log(list);
   $("#ingredient-input").val("");
-
+}
 });
 
 // Get the input field
